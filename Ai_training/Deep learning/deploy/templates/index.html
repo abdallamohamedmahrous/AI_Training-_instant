@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐦 Twitter Sentiment Analyzer</h1>
+            <p>تحليل المشاعر في النصوص باستخدام الذكاء الاصطناعي</p>
+        </div>
+
+        <div class="main-content">
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="textInput">اكتب النص المراد تحليله:</label>
+                    <textarea id="textInput" class="text-input" placeholder="مثال: The food was absolutely delicious" rows="5"></textarea>
+                </div>
+                <button id="analyzeBtn" class="analyze-btn">
+                    <span class="loading-spinner" id="loadingSpinner"></span>
+                    <span id="btnText">تحليل المشاعر</span>
+                </button>
+            </div>
+
+            <div id="resultSection" class="result-section">
+                <div id="sentimentResult" class="sentiment-result"></div>
+                <div class="confidence-section" id="confidenceSection"></div>
+            </div>
+
+            <div id="debugInfo" class="debug-info">
+                <h4>معلومات التشخيص:</h4>
+                <div id="debugContent"></div>
+            </div>
+
+            <div class="examples-section">
+                <h3 class="examples-title">أمثلة للتجربة:</h3>
+                <div class="example-item" onclick="fillExample(this)">"The food was absolutely delicious and the staff were friendly"</div>
+                <div class="example-item" onclick="fillExample(this)">"I waited for an hour and nobody came to help me"</div>
+                <div class="example-item" onclick="fillExample(this)">"The product is fine, works as expected"</div>
+                <div class="example-item" onclick="fillExample(this)">"Worst movie I have ever watched"</div>
+                <div class="example-item" onclick="fillExample(this)">"I'm so happy with my purchase, totally worth the price"</div>
+                <div class="example-item" onclick="fillExample(this)">"terrible horrible awful bad"</div>
+                <div class="example-item" onclick="fillExample(this)">"amazing wonderful fantastic great"</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Powered by TensorFlow & LSTM Neural Networks</p>
+            <button onclick="toggleDebug()" style="background: none; border: 1px solid white; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+                عرض/إخفاء معلومات التشخيص
+            </button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
