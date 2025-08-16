@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI Text Summarizer & Question Answering</title>
+    <!-- ربط CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI Text Summarizer & Question Answering</h1>
+            <p class="subtitle">Harness the power of advanced AI to summarize documents and get instant answers</p>
+            <div class="features">
+                <div class="feature-badge"><span>🚀</span><span>BART Model</span></div>
+                <div class="feature-badge"><span>🧠</span><span>BERT QA</span></div>
+                <div class="feature-badge"><span>📄</span><span>Multi-format Support</span></div>
+                <div class="feature-badge"><span>⚡</span><span>Real-time Processing</span></div>
+            </div>
+        </div>
+
+        <div class="input-section">
+            <h2 class="section-title"><span>📝</span><span>Input Your Content</span></h2>
+            
+            <div class="input-tabs">
+                <button class="tab-button active" onclick="switchTab('file', event)"><span>📁</span><span>Upload File</span></button>
+                <button class="tab-button" onclick="switchTab('text', event)"><span>✏️</span><span>Enter Text</span></button>
+            </div>
+
+            <div class="tab-content active" id="file-tab">
+                <div class="file-upload">
+                    <input type="file" id="fileInput" accept=".txt,.pdf,.docx" onchange="handleFile(event)">
+                    <div class="file-upload-icon">📁</div>
+                    <h3>Drag & Drop or Click to Upload</h3>
+                    <p>Supports: TXT, PDF, DOCX files up to 10MB</p>
+                </div>
+                <div class="file-info" id="fileInfo">
+                    <strong>📄 File uploaded:</strong> <span id="fileName"></span>
+                    <br><strong>📊 File size:</strong> <span id="fileSize"></span>
+                    <br><strong>✅ Status:</strong> Ready for processing
+                </div>
+            </div>
+
+            <div class="tab-content" id="text-tab">
+                <textarea id="textInput" placeholder="Enter your text here..."></textarea>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="generateSummary()"><span>🤖</span><span>Generate Summary</span></button>
+                <button class="btn btn-secondary" onclick="clearAll()"><span>🗑️</span><span>Clear All</span></button>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <h3>AI Processing In Progress</h3>
+            <p>Analyzing your content with advanced language models...</p>
+        </div>
+
+        <div class="results-section">
+            <div class="result-card" id="summaryResult">
+                <div class="result-header">
+                    <div class="result-icon">📄</div>
+                    <h3 class="result-title">AI-Generated Summary</h3>
+                </div>
+                <div class="result-content" id="summaryContent"></div>
+            </div>
+        </div>
+
+        <div class="qa-section active" id="qaSection">
+            <div class="result-header">
+                <div class="result-icon">❓</div>
+                <h3 class="result-title">Interactive Question Answering</h3>
+            </div>
+            
+            <div class="question-input">
+                <input type="text" id="questionInput" placeholder="Ask any question about your content..." onkeypress="handleEnter(event)">
+                <button class="ask-btn" onclick="askQuestion()"><span>🔍</span><span>Ask AI</span></button>
+            </div>
+
+            <div class="qa-history" id="qaHistory"></div>
+        </div>
+    </div>
+
+    <!-- ربط JS -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

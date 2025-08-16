@@ -1,0 +1,6 @@
+flask==2.3.3
+transformers==4.44.0
+torch==2.2.0
+sentencepiece==0.1.99
+docx==0.2.4
+PyPDF2==3.0.1
